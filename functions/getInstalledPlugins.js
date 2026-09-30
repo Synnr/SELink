@@ -5,7 +5,7 @@ const getAllPlugins = require('./plugins/getAllPlugins.js');
 const getTorchSchema = require('./settings/getTorchSchema.js');
 const notify = require('./notify.js');
 require('dotenv').config();
-var jp = require('jsonpath');
+var jp = require('./jsonpath.js');
 
 exports.getInstalledPlugins = async function () {
     return new Promise(async (resolve) => {

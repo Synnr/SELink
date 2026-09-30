@@ -1,4 +1,4 @@
-const jp = require('jsonpath');
+const jp = require('./functions/jsonpath.js');
 const JSONbig = require('json-bigint');
 
 // Your JSON string

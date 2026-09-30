@@ -17,7 +17,7 @@ const e = require('express');
 const fs = require('fs')
 const { jsonrepair } = require('jsonrepair')
 const WebSocket = require('ws')
-var jp = require('jsonpath');
+var jp = require('./functions/jsonpath.js');
 var JSONbig = require('json-bigint');
 var sqlEscape = require('sql-escape');
 var randomstring = require("randomstring");
@@ -1197,13 +1197,13 @@ app.get('/pluginsSearch', (req, res) => {
             //Result
             (async () => {
               var plugins = JSON.parse(await getPluginsDownloadsAll.getPluginsDownloadsAll());
-              var pluginName = jp.query(plugins, `$[?(@.guid=="${guid}")].name`)
-              var author = jp.query(plugins, `$[?(@.guid=="${guid}")].author`)
-              var downloads = jp.query(plugins, `$[?(@.guid=="${guid}")].downloads`)
-              var description = jp.query(plugins, `$[?(@.guid=="${guid}")].description`)
-              var latestVersion = jp.query(plugins, `$[?(@.guid=="${guid}")].latestVersion`)
-              var pluginGuid = jp.query(plugins, `$[?(@.guid=="${guid}")].guid`)
-              var icon = jp.query(plugins, `$[?(@.guid=="${guid}")].icon`)
+              var pluginName = jp.queryByGuid(plugins, guid, 'name')
+              var author = jp.queryByGuid(plugins, guid, 'author')
+              var downloads = jp.queryByGuid(plugins, guid, 'downloads')
+              var description = jp.queryByGuid(plugins, guid, 'description')
+              var latestVersion = jp.queryByGuid(plugins, guid, 'latestVersion')
+              var pluginGuid = jp.queryByGuid(plugins, guid, 'guid')
+              var icon = jp.queryByGuid(plugins, guid, 'icon')
             
             res.render('pluginsinfo.hbs', {pluginName: pluginName, author: author, downloads: downloads, description: description, latestVersion: latestVersion, pluginGuid: pluginGuid, icon: icon})
             })();
