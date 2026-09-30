@@ -35,7 +35,7 @@ exports.getTorchValues = async function (string, array) {
 // For debugging
 var getTorchValues = require(__dirname + '/getTorchValues.js');
 //var getTorchSchema = require(__dirname + '/getTorchSchema.js');
-var jp = require('jsonpath');
+var jp = require('../jsonpath.js');
 (async () => {
   //var array = `[\r\n    "chatName",\r\n    "chatColor",\r\n    "noGui"\r\n]`
   //var array = console.log(await getTorchSchema.getTorchSchema('Torch.Server.TorchConfig'));
